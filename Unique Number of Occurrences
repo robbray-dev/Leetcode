@@ -1,1 +1,26 @@
-
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        //HashMap to count, loop through hashmap to insert counts in another hashmap
+        HashMap<Integer, Integer> countMap = new HashMap();
+        HashMap<Integer, Integer> valuesMap = new HashMap();
+        
+        for(int i = 0; i < arr.length; i++){
+            if(countMap.get(arr[i]) == null){
+                countMap.put(arr[i],1);
+            } else {
+                countMap.put(arr[i],countMap.get(arr[i]) + 1);
+            }
+        }
+        
+        for(Map.Entry<Integer, Integer> entry : countMap.entrySet()){
+            valuesMap.put(entry.getValue(), entry.getKey());
+        }
+        
+        if(countMap.size() == valuesMap.size()) {
+            return true;
+        } else{
+            return false;
+        }
+        
+    }
+}
